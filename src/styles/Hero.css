@@ -1,6 +1,6 @@
 .hero-section {
   position: relative; 
-  background-image: url("https://raw.githubusercontent.com/gocomet-india/frontend-hotel-assignment/main/hero-bg.jpg"); /* Replace with actual image */
+  background-image: url("https://raw.githubusercontent.com/gocomet-india/frontend-hotel-assignment/main/hero-bg.jpg");
   background-size: contain;
   background-position:10%;
   color: white;
@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  
 }
 
 .hero-bg-tint {
@@ -191,4 +190,48 @@
 .top-suggestion {
   color: black;
   background-color: #0A66BB1F;
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    width: 100%;
+  }
+  .hero-content {
+    align-items: center;
+    text-align: center;
+  }
+  .hero-search-bar {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+  .hero-date-selector {
+    width: 100%;
+  }
+  .hero-num-persons-container {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section h1 {
+    font-size: 1.4rem;
+  }
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+  .hero-date-field input {
+    font-size: 12px;
+  }
+  .hero-num-persons-input {
+    font-size: 12px;
+  }
+  .hero-section{
+    width: 190%;
+  }
 }

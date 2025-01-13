@@ -54,3 +54,10 @@
   margin-left: 8px;
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .hotel-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}

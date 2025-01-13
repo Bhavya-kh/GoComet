@@ -90,7 +90,7 @@ const Filters = ({ onFilterChange }) => {
       </div>
 
       <hr className="separator" />
-
+        
       <div className="filter-group">
         <h4>Price Range</h4>
         <label>

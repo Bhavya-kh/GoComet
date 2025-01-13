@@ -49,8 +49,8 @@ const Navbar = () => {
                     <FaTimes />
                 </button>
                 <Link to="/" className="mobile-menu-item" onClick={toggleMenu}>Home</Link>
-                <Link to="/question" className="mobile-menu-item" onClick={toggleMenu}>Question</Link>
-                <Link to="/resources" className="mobile-menu-item" onClick={toggleMenu}>Resources</Link>
+                <Link to="/" className="mobile-menu-item" onClick={toggleMenu}>Hotels</Link>
+                <Link to="/" className="mobile-menu-item" onClick={toggleMenu}>Places</Link>
             </div>
         </section>
     );

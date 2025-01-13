@@ -64,7 +64,6 @@
   text-decoration: underline;
 }
 
-/* Mobile Menu Icon */
 .mobile-menu-icon {
   display: none;
   align-items: center;
@@ -125,6 +124,9 @@
 }
 
 @media screen and (max-width: 1024px) {
+  .navbar{
+    width: 190%;
+  }
   .desktop-menu {
       display: none;
   }

@@ -9,7 +9,7 @@ const Hero = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
-  const [numPersons, setNumPersons] = useState("");
+  const [numPersons, setNumPersons] = useState("2");
   const [suggestions, setSuggestions] = useState([]);
   const [error, setError] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true); // To control visibility of suggestions
