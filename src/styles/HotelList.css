@@ -1,0 +1,28 @@
+.hotel-list {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .filters-section {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .hotels-section {
+    flex: 3;
+  }
+  
+  .hotels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Changed from auto-fit with minmax */
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .view-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
