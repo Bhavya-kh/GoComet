@@ -30,7 +30,6 @@ const BookingModal = ({
   );
   const [currentIndex, setCurrentIndex] = useState(0);
 
-
   const getTodayDate = () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -38,8 +37,7 @@ const BookingModal = ({
     const day = today.getDate().toString().padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
-  
-  
+
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
@@ -64,13 +62,11 @@ const BookingModal = ({
   };
 
   const handleUpdateDetails = () => {
-    // Validate Check-In and Check-Out Dates
     if (!currentCheckInDate || !currentCheckOutDate) {
       alert("Please fill in both Check-In and Check-Out dates.");
       return;
     }
 
-    // Validate Guest Details
     for (let i = 0; i < guestDetails.length; i++) {
       const guest = guestDetails[i];
       if (!guest.name || !guest.age || !guest.gender) {
@@ -79,17 +75,18 @@ const BookingModal = ({
       }
     }
 
-    // Show Confirmation Alert
     alert(`Booking Confirmed!
   Hotel: ${hotelName}
   Room: ${roomName}
   Check-In: ${currentCheckInDate}
   Check-Out: ${currentCheckOutDate}
   Guests: ${guestDetails
-      .map((guest, index) => `\n${index + 1}. ${guest.name}, ${guest.age} years, ${guest.gender}`)
-      .join("")}`);
+    .map(
+      (guest, index) =>
+        `\n${index + 1}. ${guest.name}, ${guest.age} years, ${guest.gender}`
+    )
+    .join("")}`);
 
-    // Close the modal after alert
     onClose();
   };
 
@@ -108,11 +105,8 @@ const BookingModal = ({
           </button>
         </div>
 
-        {/* Grid Layout */}
         <div className="modal-grid">
-          {/* Left Section */}
           <div className="modal-left">
-            {/* Carousel */}
             <div className="carousel">
               <button className="carousel-btn prev" onClick={handlePrev}>
                 &#8249;
@@ -127,7 +121,6 @@ const BookingModal = ({
               </button>
             </div>
 
-            {/* Amenities */}
             <div className="amenities">
               {amenities.map((amenity, index) => (
                 <span key={index} className="amenity-pill">
@@ -136,13 +129,11 @@ const BookingModal = ({
               ))}
             </div>
 
-            {/* Persons Info */}
             <div className="persons-info">
               <FaUsers className="user-icon" />
               <span>{guestCount} Person(s)</span>
             </div>
 
-            {/* Check-In/Check-Out Dates */}
             <div className="dates-info">
               <div className="date-item">
                 <FaCalendarAlt className="icon" />
@@ -155,9 +146,7 @@ const BookingModal = ({
             </div>
           </div>
 
-          {/* Right Section */}
           <div className="modal-right">
-            {/* Date Selector */}
             <div className="date-selector">
               <div className="date-field">
                 <FaCalendarAlt className="icon" />
@@ -165,7 +154,7 @@ const BookingModal = ({
                   type="text"
                   value={currentCheckInDate}
                   placeholder="Check-In"
-                  min={getTodayDate()} 
+                  min={getTodayDate()}
                   onFocus={(e) => (e.target.type = "date")}
                   onBlur={(e) => (e.target.type = "text")}
                   onChange={(e) => setCurrentCheckInDate(e.target.value)}
@@ -185,7 +174,6 @@ const BookingModal = ({
               </div>
             </div>
 
-            {/* Guest Details */}
             {guestDetails.map((guest, index) => (
               <div key={index} className="guest-details">
                 <h4>Person {index + 1}</h4>
@@ -237,7 +225,6 @@ const BookingModal = ({
           </div>
         </div>
 
-        {/* Footer */}
         <button className="book-btn" onClick={handleUpdateDetails}>
           Book Now
         </button>
@@ -246,7 +233,6 @@ const BookingModal = ({
   );
 };
 
-// Prop type validation
 BookingModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   hotelName: PropTypes.string.isRequired,

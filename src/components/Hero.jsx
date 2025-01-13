@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FaCalendarAlt } from "react-icons/fa"; 
+import { FaCalendarAlt, FaMapMarkerAlt, FaUser } from "react-icons/fa"; 
 import "../styles/Hero.css";
+import { APIContext } from "../context/APIContext";
 
 const Hero = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,21 +13,30 @@ const Hero = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [error, setError] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(true); // To control visibility of suggestions
+  const [allSuggestions, setAllSuggestions] = useState([]); // New state to store all data
   const navigate = useNavigate();
+  const {hotelNameAPI } =useContext(APIContext);
 
   useEffect(() => {
-    // Fetch hotel names and cities for autocomplete
-    if (searchQuery.length > 0) {
+    if (searchQuery.length === 0) {
       axios
-        .get("https://www.gocomet.com/api/assignment/hotels-name")
+        .get(`${hotelNameAPI}`)
         .then((response) => {
+          setAllSuggestions(response.data);
           setSuggestions(response.data);
         })
         .catch((error) => {
           console.error("Error fetching suggestions:", error);
         });
+    } else {
+      const filtered = allSuggestions.filter(
+        (item) =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.city.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setSuggestions(filtered);
     }
-  }, [searchQuery]); // Fetch new suggestions whenever searchQuery changes
+  }, [searchQuery]);
 
   const handleSearch = () => {
     if (!searchQuery || !checkInDate || !checkOutDate || !numPersons) {
@@ -94,6 +104,7 @@ const Hero = () => {
       </div>
       <div className="hero-search-bar">
         <div className="hero-search-input-container">
+          <FaMapMarkerAlt className="hero-icon" />
           <input
             type="text"
             placeholder="Type city, place, or hotel name"
@@ -108,7 +119,7 @@ const Hero = () => {
               <li
                 key={index}
                 onClick={() => handleSuggestionClick(item)}
-                className="hero-suggestion-item"
+                className={`hero-suggestion-item ${index === 0 ? 'top-suggestion' : ''}`}
               >
                 {item.name} ({item.city})
               </li>
@@ -147,8 +158,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Number of Persons */}
         <div className="hero-num-persons-container">
+          <FaUser className="hero-icon" />
           <input
             type="number"
             placeholder="Number of Persons"

@@ -25,6 +25,10 @@ const Filters = ({ onFilterChange }) => {
     const clearedFilters = { price: [], rating: [], city: [] };
     setFilters(clearedFilters);
     onFilterChange(clearedFilters);
+    // also uncheck all the checkoxes in the UI
+    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+      checkbox.checked = false;
+    });
   };
 
   const handleRemoveFilter = (category, value) => {

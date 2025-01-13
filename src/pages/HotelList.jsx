@@ -9,10 +9,10 @@ import { APIContext } from "../context/APIContext";
 
 const HotelList = () => {
   const { hotelDetailsAPI } = useContext(APIContext);
-  const [allHotels, setAllHotels] = useState([]); // All hotels fetched
-  const [filteredHotels, setFilteredHotels] = useState([]); // Hotels after filtering
-  const [page, setPage] = useState(1); // Current page number
-  const [size] = useState(6); // Number of hotels per page
+  const [allHotels, setAllHotels] = useState([]);
+  const [filteredHotels, setFilteredHotels] = useState([]);
+  const [page, setPage] = useState(1);
+  const [size] = useState(6);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -83,7 +83,7 @@ const HotelList = () => {
   const paginatedHotels = filteredHotels.slice((page - 1) * size, page * size);
 
   return (
-    <div>
+    <div style={{width: "100%"}}>
       <Navbar />
       <Hero />
       <div className="hotel-list">
